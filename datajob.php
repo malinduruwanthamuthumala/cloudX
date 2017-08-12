@@ -28,10 +28,32 @@ $insert=mysql_query("INSERT INTO jobs VALUES ('$fname','$lname','$email','$tel',
 if(!$insert){
 	echo "data insertion failled";
 }
-mysql_close($con);
 
+$longiincrement= $longi+0.05;
+$longidecrement=$longi-0.05;
+$latiidecrement= $lati-0.05;
+$latiincrement= $lati+0.05;
 
+$slct= mysql_query("SELECT email 
+					FROM workers 
+					WHERE lati<$latiincrement AND lati>$latiidecrement AND longi<$longiincrement AND longi>$longidecrement");
 
+if(!$slct){
+	echo "data select failled";
+}
+ 
+while($row=mysql_fetch_array($slct))
+ {
+ 	
+ 	echo $email=$row['email'];
 
+    mail("$email",
+        "This is the message subject",
+        "$description",
+        "From: goworknearby@gmail.com" . "\r\n" . "Content-Type: text/plain; charset=utf-8",
+        "-fsender@example.com");
+
+ 	}
+ 	
 
 ?>
