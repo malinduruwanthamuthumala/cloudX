@@ -17,13 +17,14 @@ include ('connection.php');
  $interested=$_POST['if'];
  $lati=$_POST['lat2'];
  $longi=$_POST['lng2'];
+ $description=$_POST['description'];
 
 
 $db=mysql_select_db("goworknearby");
 	if(!$db){
 		echo "database selection failled";
 	}
-$insert=mysql_query("INSERT INTO workers VALUES ('$fname','$lname','$email','$tel','$hometown','$country','$interested','$lati','$longi')");
+$insert=mysql_query("INSERT INTO jobs VALUES ('$fname','$lname','$email','$tel','$hometown','$country','$interested','$lati','$longi','$description')");
 if(!$insert){
 	echo "data insertion failled";
 }
