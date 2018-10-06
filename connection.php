@@ -1,18 +1,11 @@
-
 <?php 
-//include "config.php";
-$Host="localhost";
-$Username="root";
-$Password="";
-$Db="malindus";
-$con=mysql_connect($Host,$Username,$Password,$Db);
+
+$con=mysqli_connect('localhost','root','','job');
+
 if(!$con){
-	echo "failed";
+	echo "connection failled";
+
 }
 
-$db=mysql_select_db($Db);
-if (!$db) {
-	echo "failled";
-}
 
  ?>
